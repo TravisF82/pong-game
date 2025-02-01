@@ -42,3 +42,4 @@ C:\Users\carol\OneDrive\Desktop\Pong-Game\obj\Debug\net8.0-windows\refint\Pong.d
 C:\Users\carol\OneDrive\Desktop\Pong-Game\obj\Debug\net8.0-windows\Pong.pdb
 C:\Users\carol\OneDrive\Desktop\Pong-Game\obj\Debug\net8.0-windows\Pong.genruntimeconfig.cache
 C:\Users\carol\OneDrive\Desktop\Pong-Game\obj\Debug\net8.0-windows\ref\Pong.dll
+C:\Users\carol\OneDrive\Desktop\Pong-Game\obj\Debug\net8.0-windows\Pong.Forms.ChooseBall.resources

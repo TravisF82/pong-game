@@ -34,6 +34,7 @@
             btnTwoPlayer = new Button();
             btnSettings = new Button();
             pnlContainer = new Panel();
+            btnCustomise = new Button();
             pnlContainer.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             btnOnePlayer.Font = new Font("Unispace", 14.25F, FontStyle.Bold);
             btnOnePlayer.ForeColor = Color.White;
             btnOnePlayer.Image = (Image)resources.GetObject("btnOnePlayer.Image");
-            btnOnePlayer.Location = new Point(312, 85);
+            btnOnePlayer.Location = new Point(312, 11);
             btnOnePlayer.Name = "btnOnePlayer";
             btnOnePlayer.Size = new Size(150, 65);
             btnOnePlayer.TabIndex = 7;
@@ -69,7 +70,7 @@
             btnTwoPlayer.Font = new Font("Unispace", 14.25F, FontStyle.Bold);
             btnTwoPlayer.ForeColor = Color.White;
             btnTwoPlayer.Image = (Image)resources.GetObject("btnTwoPlayer.Image");
-            btnTwoPlayer.Location = new Point(312, 156);
+            btnTwoPlayer.Location = new Point(312, 82);
             btnTwoPlayer.Name = "btnTwoPlayer";
             btnTwoPlayer.Size = new Size(150, 69);
             btnTwoPlayer.TabIndex = 8;
@@ -98,6 +99,7 @@
             // 
             // pnlContainer
             // 
+            pnlContainer.Controls.Add(btnCustomise);
             pnlContainer.Controls.Add(btnOnePlayer);
             pnlContainer.Controls.Add(btnSettings);
             pnlContainer.Controls.Add(btnTwoPlayer);
@@ -105,6 +107,22 @@
             pnlContainer.Name = "pnlContainer";
             pnlContainer.Size = new Size(776, 325);
             pnlContainer.TabIndex = 10;
+            // 
+            // btnCustomise
+            // 
+            btnCustomise.Font = new Font("Unispace", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCustomise.ForeColor = Color.White;
+            btnCustomise.Image = (Image)resources.GetObject("btnCustomise.Image");
+            btnCustomise.Location = new Point(312, 156);
+            btnCustomise.Name = "btnCustomise";
+            btnCustomise.Size = new Size(150, 69);
+            btnCustomise.TabIndex = 10;
+            btnCustomise.Text = "Customise";
+            btnCustomise.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnCustomise.UseVisualStyleBackColor = false;
+            btnCustomise.Click += btnCustomise_Click;
+            btnCustomise.MouseEnter += btnCustomise_MouseEnter;
+            btnCustomise.MouseLeave += btnCustomise_MouseLeave;
             // 
             // Menu
             // 
@@ -133,5 +151,6 @@
         private Button btnTwoPlayer;
         private Button btnSettings;
         private Panel pnlContainer;
+        private Button btnCustomise;
     }
 }

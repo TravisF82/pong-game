@@ -11,10 +11,12 @@ namespace Pong.Classes
     public static class GameSettings
     {
         public static bool sfx_muted = false;
+        public static string selected_ball = "default";
 
         public static Dictionary<string, object> settingsData = new Dictionary<string, object>()
         {
             { "sfx_muted", sfx_muted },
+            { "selected_ball", selected_ball},
         };
 
         public static void saveSettings()
@@ -22,6 +24,7 @@ namespace Pong.Classes
             try
             {
                 settingsData["sfx_muted"] = sfx_muted;
+                settingsData["selected_ball"] = selected_ball;
 
                 var json = JsonSerializer.Serialize(settingsData);
                 string filePath = AppDomain.CurrentDomain.BaseDirectory + "settings.json";
@@ -51,6 +54,7 @@ namespace Pong.Classes
                 if (settingsData != null)
                 {
                     sfx_muted = Convert.ToBoolean(settingsData["sfx_muted"].ToString());
+                    selected_ball = settingsData["selected_ball"].ToString();
                 }
             }
             catch (Exception ex)

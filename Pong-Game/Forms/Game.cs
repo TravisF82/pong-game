@@ -73,10 +73,11 @@ namespace Pong.Forms
 
         private void Game_Load(object sender, EventArgs e)
         {
-            picBall.Image = Properties.Resources.pong_bowling_ball;
             positionScore();
             resetGame();
             tmrGame.Start();
+            this.Focus();
+            picBall.Image = getSavedBall();
         }
 
         private void positionScore()
@@ -90,10 +91,31 @@ namespace Pong.Forms
             control.Location = new Point((this.ClientSize.Width - control.Width) / 2, Y);
         }
 
-        private void chooseRandomBall()
+        private Image getSavedBall()
+        {
+            Image ball = balls[0];
+            switch (GameSettings.selected_ball)
+            {
+                case "Tennis":
+                    ball = balls[0];
+                    break;
+                case "Bowling":
+                    ball = balls[1];
+                    break;
+                case "Random":
+                    ball = chooseRandomBall();
+                    break;
+                default:
+
+                    break;
+            }
+            return ball;
+        }
+
+        private Image chooseRandomBall()
         {
             Image ball = balls[ran.Next(balls.Count)];
-            picBall.Image = ball;
+            return ball;
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
@@ -104,6 +126,12 @@ namespace Pong.Forms
                     moving_up = true;
                     break;
                 case Keys.Down:
+                    moving_down = true;
+                    break;
+                case Keys.W:
+                    moving_up = true;
+                    break;
+                case Keys.S:
                     moving_down = true;
                     break;
             }
@@ -134,6 +162,12 @@ namespace Pong.Forms
                     moving_up = false;
                     break;
                 case Keys.Down:
+                    moving_down = false;
+                    break;
+                case Keys.W:
+                    moving_up = false;
+                    break;
+                case Keys.S:
                     moving_down = false;
                     break;
             }
@@ -313,13 +347,27 @@ namespace Pong.Forms
             checkCollision(picPlayerOne, picBall, picPlayerOne.Right + 10);
             checkCollision(picPlayerTwo, picBall, picPlayerTwo.Left - 45);
 
-            if (moving_up && picPlayerOne.Top > pnlTop.Top + pnlTop.Height)
+            if (game_mode == "single")
             {
-                picPlayerOne.Top -= player_speed;
+                if (moving_up && picPlayerOne.Top > pnlTop.Top + pnlTop.Height)
+                {
+                    picPlayerOne.Top -= player_speed;
+                }
+                if (moving_down && picPlayerOne.Bottom < this.ClientSize.Height - pnlBottom.Height)
+                {
+                    picPlayerOne.Top += player_speed;
+                }
             }
-            if (moving_down && picPlayerOne.Bottom < this.ClientSize.Height - pnlBottom.Height)
+            else
             {
-                picPlayerOne.Top += player_speed;
+                if (moving_up && picPlayerTwo.Top > pnlTop.Top + pnlTop.Height)
+                {
+                    picPlayerTwo.Top -= player_speed;
+                }
+                if (moving_down && picPlayerTwo.Bottom < this.ClientSize.Height - pnlBottom.Height)
+                {
+                    picPlayerTwo.Top += player_speed;
+                }
             }
 
             if (player_score == 10)
@@ -338,6 +386,7 @@ namespace Pong.Forms
             {
                 picPlayerOne.Top = e.Y;
             }
+            this.Focus();
         }
 
         private void tmrResetBallDelay_Tick(object sender, EventArgs e)

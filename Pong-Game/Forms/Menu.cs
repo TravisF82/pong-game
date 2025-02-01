@@ -24,6 +24,7 @@ namespace Pong.Forms
             this.Cursor = new Cursor(((Bitmap)Properties.Resources.cursor_pointer).GetHicon());
             btnOnePlayer.Cursor = new Cursor(((Bitmap)Properties.Resources.cursor_hand).GetHicon());
             btnTwoPlayer.Cursor = new Cursor(((Bitmap)Properties.Resources.cursor_hand).GetHicon());
+            btnCustomise.Cursor = new Cursor(((Bitmap)Properties.Resources.cursor_hand).GetHicon());
             btnSettings.Cursor = new Cursor(((Bitmap)Properties.Resources.cursor_hand).GetHicon());
         }
 
@@ -91,12 +92,33 @@ namespace Pong.Forms
             pnlContainer.Controls.Clear();
             pnlContainer.Controls.Add(btnOnePlayer);
             pnlContainer.Controls.Add(btnTwoPlayer);
+            pnlContainer.Controls.Add(btnCustomise);
             pnlContainer.Controls.Add(btnSettings);
         }
 
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnCustomise_Click(object sender, EventArgs e)
+        {
+            pnlContainer.Controls.Clear();
+            ChooseBall chooseBall = new ChooseBall();
+            chooseBall.ReturnToMenu += ReturnToMenu;
+            pnlContainer.Controls.Add(chooseBall);
+        }
+
+        private void btnCustomise_MouseEnter(object sender, EventArgs e)
+        {
+            btnCustomise.FlatStyle = FlatStyle.Flat;
+            btnCustomise.FlatAppearance.BorderSize = 2;
+        }
+
+        private void btnCustomise_MouseLeave(object sender, EventArgs e)
+        {
+            btnCustomise.FlatStyle = FlatStyle.Standard;
+            btnCustomise.FlatAppearance.BorderSize = 1;
         }
     }
 }

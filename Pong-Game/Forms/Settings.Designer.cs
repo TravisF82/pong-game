@@ -87,13 +87,13 @@
             // lblControls
             // 
             lblControls.AutoSize = true;
-            lblControls.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblControls.Font = new Font("Unispace", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblControls.ForeColor = Color.White;
-            lblControls.Location = new Point(400, 74);
+            lblControls.Location = new Point(424, 74);
             lblControls.Name = "lblControls";
-            lblControls.Size = new Size(373, 145);
+            lblControls.Size = new Size(298, 184);
             lblControls.TabIndex = 11;
-            lblControls.Text = "Move Paddle - Drag Mouse\r\nPowerups:\r\n1 - Speed Increase\r\n2 - Speed Decrease\r\n3 - Ball Invisibility\r\n";
+            lblControls.Text = "Move Paddle - Drag Mouse\r\nOR arrow keys OR W (up) \r\nand S (down)\r\n\r\nPowerups:\r\n1 - Speed Increase\r\n2 - Speed Decrease\r\n3 - Ball Invisibility\r\n";
             // 
             // Settings
             // 
